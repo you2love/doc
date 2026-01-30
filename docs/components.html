@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DOCX组件说明 - 详细介绍DOCX文件中各个组件的作用和用法">
+    <meta name="keywords" content="DOCX, 组件, XML, Word, Office">
+    <title>组件说明 | DOCX文件结构详解</title>
+    <link rel="stylesheet" href="../css/modern-style.css">
+    <link rel="stylesheet" href="../css/docx-structure.css">
+    <link rel="stylesheet" href="../css/components-examples.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>📄 DOCX文件结构详解</h1>
+                    <span class="tagline">Microsoft Office Open XML格式完全指南</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="../docx-structure.html">主页</a>
+                    <a href="structure-detail.html">结构详解</a>
+                    <a href="components.html" class="active">组件说明</a>
+                    <a href="examples.html">示例展示</a>
+                    <a href="code-examples.html">代码示例</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="page-header-docx">
+            <div class="container">
+                <h1 class="page-title">🧩 DOCX组件说明</h1>
+                <p class="page-subtitle">详细介绍DOCX文件中各个组件的作用、用法和最佳实践</p>
+            </div>
+        </section>
+
+        <!-- 组件分类 -->
+        <section class="component-categories">
+            <div class="container">
+                <h2 class="section-title">组件分类</h2>
+                
+                <!-- 核心组件 -->
+                <div class="component-section">
+                    <h3 class="section-subtitle">🎯 核心组件</h3>
+                    
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">📋</span>
+                            <h4 class="component-name">[Content_Types].xml</h4>
+                            <span class="component-badge required">必需</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">内容类型定义文件，是DOCX文件中最顶层的配置文件。它定义了ZIP包中每个文件的内容类型（MIME类型），告诉应用程序如何处理这些文件。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">根目录</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">命名空间</span>
+                                        <span class="info-value">http://schemas.openxmlformats.org/package/2006/content-types</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>必须作为ZIP包中的第一个文件</li>
+                                        <li>每个部分都需要有对应的内容类型定义</li>
+                                        <li>使用 &lt;Default&gt; 定义基于扩展名的默认类型</li>
+                                        <li>使用 &lt;Override&gt; 为特定路径覆盖内容类型</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">📄</span>
+                            <h4 class="component-name">word/document.xml</h4>
+                            <span class="component-badge core">核心</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">文档的主内容文件，包含所有可见的文档内容。这是DOCX文件中最重要、最核心的XML文件，定义了文档的实际内容结构。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">命名空间</span>
+                                        <span class="info-value">http://schemas.openxmlformats.org/wordprocessingml/2006/main</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>包含文档的所有文本、段落、表格等内容</li>
+                                        <li>使用 &lt;w:p&gt; 表示段落，&lt;w:r&gt; 表示文本运行</li>
+                                        <li>样式引用应该在段落或文本运行属性中定义</li>
+                                        <li>图片通过关系引用，实际文件存储在 word/media/ 目录</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">🔗</span>
+                            <h4 class="component-name">_rels/</h4>
+                            <span class="component-badge required">必需</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">关系定义目录，描述文档内部各部分之间的关联关系。关系是Open XML格式的核心概念，用于维护文档的内部结构完整性。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">根目录 / word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">命名空间</span>
+                                        <span class="info-value">http://schemas.openxmlformats.org/package/2006/relationships</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>每个目录都可以有自己的 _rels 子目录</li>
+                                        <li>关系文件必须命名为 .rels</li>
+                                        <li>每个关系都有唯一的 ID 和类型</li>
+                                        <li>通过关系ID在文档中引用其他部分</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 样式组件 -->
+                <div class="component-section">
+                    <h3 class="section-subtitle">🎨 样式组件</h3>
+                    
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">🎨</span>
+                            <h4 class="component-name">word/styles.xml</h4>
+                            <span class="component-badge important">重要</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">样式定义文件，集中管理文档中使用的所有样式。包括段落样式、字符样式、表格样式、列表样式等，确保文档格式的一致性。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">样式类型</span>
+                                        <span class="info-value">段落、字符、表格、列表</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>使用样式而不是直接格式化，提高文档一致性</li>
+                                        <li>可以创建基于其他样式的继承样式</li>
+                                        <li>支持快速样式集和样式库</li>
+                                        <li>样式可以分组和组织</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">📊</span>
+                            <h4 class="component-name">word/numbering.xml</h4>
+                            <span class="component-badge optional">可选</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">编号定义文件，定义文档中使用的所有编号和列表样式。包括项目符号、编号列表、多级列表等。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">功能</span>
+                                        <span class="info-value">项目符号、编号、多级列表</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>每个编号定义都有唯一的抽象编号ID</li>
+                                        <li>可以定义多级列表的层级关系</li>
+                                        <li>支持自定义编号格式和符号</li>
+                                        <li>通过 numId 在文档中引用编号定义</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">🎭</span>
+                            <h4 class="component-name">word/theme/</h4>
+                            <span class="component-badge optional">可选</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">主题文件目录，包含文档的主题定义。主题定义了文档的配色方案、字体方案和效果方案，用于保持文档的视觉一致性。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/theme/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">包含</span>
+                                        <span class="info-value">theme1.xml, fontScheme.xml, colorScheme.xml</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>主题可以快速改变整个文档的外观</li>
+                                        <li>配色方案定义12种颜色</li>
+                                        <li>字体方案定义标题和正文字体</li>
+                                        <li>效果方案定义视觉效果（阴影、倒影等）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 设置组件 -->
+                <div class="component-section">
+                    <h3 class="section-subtitle">⚙️ 设置组件</h3>
+                    
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">⚙️</span>
+                            <h4 class="component-name">word/settings.xml</h4>
+                            <span class="component-badge important">重要</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">文档设置文件，存储文档的全局设置和配置。包括拼写检查、自动保存、视图选项、兼容性设置等。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">设置类型</span>
+                                        <span class="info-value">拼写、视图、兼容性</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>控制文档的默认行为和显示方式</li>
+                                        <li>可以设置语言和校对选项</li>
+                                        <li>定义打印和视图设置</li>
+                                        <li>设置文档的兼容性级别</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">🌐</span>
+                            <h4 class="component-name">word/webSettings.xml</h4>
+                            <span class="component-badge optional">可选</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">Web设置文件，定义文档在Web环境中显示的设置。包括超链接颜色、网页视图选项等。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">用途</span>
+                                        <span class="info-value">Web显示优化</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>优化文档在浏览器中的显示效果</li>
+                                        <li>设置超链接的默认颜色</li>
+                                        <li>控制Web视图的缩放和布局</li>
+                                        <li>影响HTML导出的结果</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 属性组件 -->
+                <div class="component-section">
+                    <h3 class="section-subtitle">📊 属性组件</h3>
+                    
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">📊</span>
+                            <h4 class="component-name">docProps/core.xml</h4>
+                            <span class="component-badge important">重要</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">核心属性文件，包含文档的基本元数据。如标题、作者、主题、关键词、创建时间、修改时间等。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">docProps/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">包含</span>
+                                        <span class="info-value">标题、作者、时间、描述</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>支持 Dublin Core 元数据标准</li>
+                                        <li>包含创建和修改的时间戳</li>
+                                        <li>用于文档搜索和索引</li>
+                                        <li>可以添加自定义属性</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">📈</span>
+                            <h4 class="component-name">docProps/app.xml</h4>
+                            <span class="component-badge important">重要</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">应用属性文件，包含应用程序特定的文档属性。如页数、字数、字符数、段落数、应用程序名称、版本等。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">docProps/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">包含</span>
+                                        <span class="info-value">统计信息、应用版本</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>自动计算的统计信息</li>
+                                        <li>记录创建文档的应用程序</li>
+                                        <li>包含文档安全级别</li>
+                                        <li>用于文档管理和分析</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 资源组件 -->
+                <div class="component-section">
+                    <h3 class="section-subtitle">📁 资源组件</h3>
+                    
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">🖼️</span>
+                            <h4 class="component-name">word/media/</h4>
+                            <span class="component-badge optional">可选</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">媒体文件目录，存储文档中使用的所有媒体资源。包括图片、音频、视频等多媒体文件。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/media/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">PNG, JPEG, GIF, SVG等</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">引用方式</span>
+                                        <span class="info-value">通过关系ID</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>图片文件需要通过关系引用</li>
+                                        <li>支持多种图片格式（PNG、JPEG、GIF、SVG）</li>
+                                        <li>可以存储音频和视频文件</li>
+                                        <li>建议使用WebP等现代格式以减小文件大小</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="component-detail">
+                        <div class="component-header">
+                            <span class="component-icon">🔤</span>
+                            <h4 class="component-name">word/fontTable.xml</h4>
+                            <span class="component-badge optional">可选</span>
+                        </div>
+                        <div class="component-body">
+                            <div class="component-info">
+                                <p class="component-desc">字体表文件，列出文档中使用的所有字体。包括字体名称、字体类型、字符集等信息。</p>
+                                
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <span class="info-label">位置</span>
+                                        <span class="info-value">word/</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">格式</span>
+                                        <span class="info-value">XML</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">用途</span>
+                                        <span class="info-value">字体管理</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="usage-tips">
+                                    <h5 class="tips-title">💡 使用提示</h5>
+                                    <ul class="tips-list">
+                                        <li>跟踪文档中使用的字体</li>
+                                        <li>支持嵌入字体（增加文件大小）</li>
+                                        <li>可以定义字体的替代方案</li>
+                                        <li>确保跨平台字体兼容性</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于</h3>
+                    <p>深入了解DOCX文件结构，掌握Office Open XML格式的核心技术</p>
+                </div>
+                <div class="footer-section">
+                    <h3>导航</h3>
+                    <ul>
+                        <li><a href="../docx-structure.html">主页</a></li>
+                        <li><a href="structure-detail.html">结构详解</a></li>
+                        <li><a href="components.html">组件说明</a></li>
+                        <li><a href="examples.html">示例展示</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>相关标准</h3>
+                    <ul>
+                        <li>ECMA-376</li>
+                        <li>ISO/IEC 29500</li>
+                        <li>Office Open XML</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DOCX文件结构详解. 纯静态网站，无JavaScript依赖</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

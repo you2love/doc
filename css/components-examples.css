@@ -1,0 +1,665 @@
+/* ========================================
+   组件说明和示例展示页面专用样式
+   为组件详细说明和示例展示提供专业的视觉效果
+   ======================================== */
+
+/* ========================================
+   组件分类区域
+   ======================================== */
+.component-categories {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--bg-secondary);
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.component-section {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.component-section:last-child {
+    margin-bottom: 0;
+}
+
+/* ========================================
+   组件详细说明
+   ======================================== */
+.component-detail {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--spacing-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.component-detail:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.component-header {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.component-icon {
+    font-size: 2rem;
+}
+
+.component-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+    flex-grow: 1;
+}
+
+.component-badge {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.component-badge.required {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.component-badge.core {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.component-badge.important {
+    background-color: var(--warning-color);
+    color: white;
+}
+
+.component-badge.optional {
+    background-color: var(--text-tertiary);
+    color: white;
+}
+
+.component-body {
+    padding: var(--spacing-xl);
+}
+
+.component-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.component-desc {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* ========================================
+   信息网格
+   ======================================== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.info-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+}
+
+.info-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-family: var(--font-family-mono);
+}
+
+/* ========================================
+   使用提示
+   ======================================== */
+.usage-tips {
+    background-color: rgba(37, 99, 235, 0.05);
+    border-left: 4px solid var(--primary-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+}
+
+.tips-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-list li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.tips-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* ========================================
+   完整示例区域
+   ======================================== */
+.complete-example {
+    padding: var(--spacing-3xl) 0;
+}
+
+.example-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.example-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+/* ========================================
+   文档预览视觉
+   ======================================== */
+.preview-visual {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+}
+
+.document-preview {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.doc-page {
+    background-color: white;
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-md);
+    min-height: 400px;
+}
+
+.doc-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-md);
+}
+
+.doc-paragraph {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.doc-paragraph.formatted {
+    font-size: 1.1rem;
+}
+
+.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-lg) 0;
+    font-size: 0.95rem;
+}
+
+.doc-table th,
+.doc-table td {
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+}
+
+.doc-table th {
+    background-color: var(--bg-tertiary);
+    font-weight: 700;
+}
+
+/* ========================================
+   预览代码
+   ======================================== */
+.preview-code {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.code-tabs {
+    display: flex;
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+.tab.active {
+    background-color: var(--bg-primary);
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.code-content {
+    padding: var(--spacing-lg);
+    overflow-x: auto;
+}
+
+/* ========================================
+   实用场景
+   ======================================== */
+.use-cases {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--bg-secondary);
+}
+
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.use-case-card {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.use-case-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.case-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.case-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.case-desc {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.case-example {
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    text-align: left;
+}
+
+.case-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.875rem;
+}
+
+.case-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.case-list li {
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.case-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* ========================================
+   最佳实践
+   ======================================== */
+.best-practices {
+    padding: var(--spacing-3xl) 0;
+}
+
+.practice-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.practice-item {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.practice-number {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    opacity: 0.1;
+    line-height: 1;
+}
+
+.practice-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    padding-right: var(--spacing-3xl);
+}
+
+.practice-desc {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+}
+
+.practice-code {
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--success-color);
+}
+
+.code-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.875rem;
+}
+
+.practice-code code {
+    display: block;
+    font-family: var(--font-family-mono);
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ========================================
+   常见问题
+   ======================================== */
+.faq {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--bg-secondary);
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.faq-item {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.faq-question {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+}
+
+.faq-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.faq-answer {
+    padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ========================================
+   结构列表
+   ======================================== */
+.structure-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.structure-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+}
+
+.struct-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    background-color: var(--bg-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.struct-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   元素列表
+   ======================================== */
+.element-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.element-list li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.element-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ========================================
+   响应式设计 - 组件和示例页面
+   ======================================== */
+@media (max-width: 1024px) {
+    .example-preview {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .component-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .component-badge {
+        align-self: flex-start;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .doc-page {
+        padding: var(--spacing-lg);
+    }
+    
+    .use-case-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .component-detail {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .component-header,
+    .component-body {
+        padding: var(--spacing-md);
+    }
+    
+    .doc-title {
+        font-size: 1.5rem;
+    }
+    
+    .code-tabs {
+        flex-direction: column;
+    }
+    
+    .tab {
+        text-align: center;
+    }
+}
+
+/* ========================================
+   打印样式 - 组件和示例页面
+   ======================================== */
+@media print {
+    .site-header,
+    .site-footer,
+    .page-header-docx {
+        display: none;
+    }
+    
+    .component-detail,
+    .use-case-card,
+    .practice-item,
+    .faq-item,
+    .preview-visual,
+    .preview-code {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+    
+    .code-tabs {
+        background: white;
+    }
+    
+    .tab {
+        border-bottom: 1px solid #ccc;
+    }
+}

@@ -1,0 +1,280 @@
+/* ========================================
+   代码示例页面专用样式
+   为代码展示提供专业的视觉效果
+   ======================================== */
+
+/* ========================================
+   语言部分
+   ======================================== */
+.language-section {
+    padding: var(--spacing-4xl) 0;
+    background-color: var(--bg-primary);
+}
+
+.language-section.go-section {
+    background-color: var(--bg-secondary);
+}
+
+.language-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-2xl);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--spacing-2xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.language-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+    opacity: 0.3;
+}
+
+.language-icon {
+    font-size: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.language-info {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.language-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: var(--spacing-sm);
+}
+
+.language-desc {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.language-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   代码部分
+   ======================================== */
+.code-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.section-heading::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+}
+
+.code-block {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.code-full {
+    font-family: var(--font-family-mono);
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0;
+    padding: var(--spacing-xl);
+    overflow-x: auto;
+    white-space: pre;
+    background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
+}
+
+/* ========================================
+   对比部分
+   ======================================== */
+.comparison-section {
+    padding: var(--spacing-4xl) 0;
+    background-color: var(--bg-secondary);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.comparison-card {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.comp-header {
+    background: var(--gradient-primary);
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.comp-icon {
+    font-size: 2.5rem;
+}
+
+.comp-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+}
+
+.comp-body {
+    padding: var(--spacing-xl);
+}
+
+.comp-subtitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.comp-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+.comp-list li {
+    padding: var(--spacing-sm) 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ========================================
+   推荐建议
+   ======================================== */
+.recommendation-box {
+    background: linear-gradient(135deg, var(--success-color), var(--accent-color));
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-2xl);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.recommendation-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-lg);
+    color: white;
+}
+
+.recommendation-content p {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.recommendation-content strong {
+    font-weight: 800;
+}
+
+/* ========================================
+   响应式设计
+   ======================================== */
+@media (max-width: 768px) {
+    .language-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .language-title {
+        font-size: 1.5rem;
+    }
+    
+    .language-desc {
+        font-size: 1rem;
+    }
+    
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-full {
+        font-size: 0.75rem;
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .language-icon {
+        font-size: 3rem;
+    }
+    
+    .comp-icon {
+        font-size: 2rem;
+    }
+    
+    .recommendation-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+    .language-header,
+    .recommendation-box {
+        background: white;
+        color: black;
+    }
+    
+    .code-block {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .comparison-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+}

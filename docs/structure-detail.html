@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DOCX文件结构详解 - 详细解析DOCX文件的内部组成和XML结构">
+    <meta name="keywords" content="DOCX, 文件结构, XML, ZIP, Open XML, 详细解析">
+    <title>结构详解 | DOCX文件结构详解</title>
+    <link rel="stylesheet" href="../css/modern-style.css">
+    <link rel="stylesheet" href="../css/docx-structure.css">
+    <link rel="stylesheet" href="../css/components-examples.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>📄 DOCX文件结构详解</h1>
+                    <span class="tagline">Microsoft Office Open XML格式完全指南</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="../docx-structure.html">主页</a>
+                    <a href="structure-detail.html" class="active">结构详解</a>
+                    <a href="components.html">组件说明</a>
+                    <a href="examples.html">示例展示</a>
+                    <a href="code-examples.html">代码示例</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="page-header-docx">
+            <div class="container">
+                <h1 class="page-title">🔬 DOCX文件结构详解</h1>
+                <p class="page-subtitle">深入解析DOCX文件的每个组成部分和XML结构</p>
+            </div>
+        </section>
+
+        <!-- 完整文件结构 -->
+        <section class="full-structure">
+            <div class="container">
+                <h2 class="section-title">完整文件结构</h2>
+                <div class="structure-diagram">
+                    <div class="diagram-box root-box">
+                        <div class="box-icon">📦</div>
+                        <div class="box-content">
+                            <h3 class="box-title">document.docx</h3>
+                            <p class="box-desc">ZIP压缩包</p>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-level">
+                        <div class="diagram-box file-box">
+                            <div class="box-icon">📋</div>
+                            <div class="box-content">
+                                <h3 class="box-title">[Content_Types].xml</h3>
+                                <p class="box-desc">内容类型定义</p>
+                            </div>
+                        </div>
+                        
+                        <div class="diagram-box folder-box">
+                            <div class="box-icon">📁</div>
+                            <div class="box-content">
+                                <h3 class="box-title">_rels/</h3>
+                                <p class="box-desc">关系目录</p>
+                                <div class="sub-box">
+                                    <span class="sub-icon">📄</span>
+                                    <span class="sub-name">.rels</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="diagram-box folder-box large-box">
+                            <div class="box-icon">📁</div>
+                            <div class="box-content">
+                                <h3 class="box-title">word/</h3>
+                                <p class="box-desc">文档内容目录</p>
+                                <div class="sub-items">
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">document.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">styles.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">settings.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">webSettings.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">fontTable.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">numbering.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">header1.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📄</span>
+                                        <span class="sub-name">footer1.xml</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📁</span>
+                                        <span class="sub-name">_rels/</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📁</span>
+                                        <span class="sub-name">media/</span>
+                                    </div>
+                                    <div class="sub-box">
+                                        <span class="sub-icon">📁</span>
+                                        <span class="sub-name">theme/</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="diagram-box folder-box">
+                            <div class="box-icon">📁</div>
+                            <div class="box-content">
+                                <h3 class="box-title">docProps/</h3>
+                                <p class="box-desc">文档属性</p>
+                                <div class="sub-box">
+                                    <span class="sub-icon">📄</span>
+                                    <span class="sub-name">core.xml</span>
+                                </div>
+                                <div class="sub-box">
+                                    <span class="sub-icon">📄</span>
+                                    <span class="sub-name">app.xml</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 详细解析 -->
+        <section class="detailed-analysis">
+            <div class="container">
+                <h2 class="section-title">详细解析</h2>
+                
+                <!-- [Content_Types].xml -->
+                <article class="analysis-item">
+                    <div class="analysis-header">
+                        <span class="analysis-icon">📋</span>
+                        <h3 class="analysis-title">[Content_Types].xml</h3>
+                        <span class="analysis-badge">必需</span>
+                    </div>
+                    <div class="analysis-content">
+                        <p class="analysis-desc">内容类型定义文件，描述ZIP包中每个部分的内容类型。这是DOCX文件中最顶层的重要文件，告诉应用程序如何处理包中的每个文件。</p>
+                        
+                        <div class="analysis-section">
+                            <h4 class="section-heading">主要元素</h4>
+                            <ul class="element-list">
+                                <li><code>&lt;Default&gt;</code> - 定义默认的内容类型映射（基于文件扩展名）</li>
+                                <li><code>&lt;Override&gt;</code> - 覆盖特定路径的内容类型</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-example">
+                            <div class="example-header">
+                                <span class="example-title">完整示例</span>
+                            </div>
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"&gt;
+  &lt;!-- 默认内容类型 --&gt;
+  &lt;Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/&gt;
+  &lt;Default Extension="xml" ContentType="application/xml"/&gt;
+  &lt;Default Extension="png" ContentType="image/png"/&gt;
+  &lt;Default Extension="jpeg" ContentType="image/jpeg"/&gt;
+  &lt;Default Extension="gif" ContentType="image/gif"/&gt;
+  
+  &lt;!-- 覆盖内容类型 --&gt;
+  &lt;Override PartName="/word/document.xml" 
+            ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/&gt;
+  &lt;Override PartName="/word/styles.xml" 
+            ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/&gt;
+  &lt;Override PartName="/word/settings.xml" 
+            ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/&gt;
+  &lt;Override PartName="/docProps/core.xml" 
+            ContentType="application/vnd.openxmlformats-package.core-properties+xml"/&gt;
+  &lt;Override PartName="/docProps/app.xml" 
+            ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/&gt;
+&lt;/Types&gt;</pre>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- _rels 目录 -->
+                <article class="analysis-item">
+                    <div class="analysis-header">
+                        <span class="analysis-icon">🔗</span>
+                        <h3 class="analysis-title">_rels/</h3>
+                        <span class="analysis-badge">必需</span>
+                    </div>
+                    <div class="analysis-content">
+                        <p class="analysis-desc">关系目录，存储包级别的关系定义。包含一个 .rels 文件，定义了包内部各部分之间的关系。</p>
+                        
+                        <div class="analysis-section">
+                            <h4 class="section-heading">主要文件</h4>
+                            <ul class="element-list">
+                                <li><code>.rels</code> - 包级别的关系文件</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-example">
+                            <div class="example-header">
+                                <span class="example-title">.rels 文件示例</span>
+                            </div>
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"&gt;
+  &lt;!-- 主文档关系 --&gt;
+  &lt;Relationship Id="rId1" 
+                Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" 
+                Target="word/document.xml"/&gt;
+  
+  &lt;!-- 文档属性关系 --&gt;
+  &lt;Relationship Id="rId2" 
+                Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" 
+                Target="docProps/core.xml"/&gt;
+  
+  &lt;Relationship Id="rId3" 
+                Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" 
+                Target="docProps/app.xml"/&gt;
+&lt;/Relationships&gt;</pre>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- word/document.xml -->
+                <article class="analysis-item">
+                    <div class="analysis-header">
+                        <span class="analysis-icon">📄</span>
+                        <h3 class="analysis-title">word/document.xml</h3>
+                        <span class="analysis-badge">核心</span>
+                    </div>
+                    <div class="analysis-content">
+                        <p class="analysis-desc">文档的主要内容文件，包含所有可见的文档内容：文本、段落、表格、图片、形状等。这是DOCX文件中最核心的XML文件。</p>
+                        
+                        <div class="analysis-section">
+                            <h4 class="section-heading">主要元素结构</h4>
+                            <div class="structure-list">
+                                <div class="structure-item">
+                                    <span class="struct-tag">&lt;w:document&gt;</span>
+                                    <span class="struct-desc">文档根元素</span>
+                                </div>
+                                <div class="structure-item">
+                                    <span class="struct-tag">&lt;w:body&gt;</span>
+                                    <span class="struct-desc">文档主体内容</span>
+                                </div>
+                                <div class="structure-item">
+                                    <span class="struct-tag">&lt;w:p&gt;</span>
+                                    <span class="struct-desc">段落</span>
+                                </div>
+                                <div class="structure-item">
+                                    <span class="struct-tag">&lt;w:r&gt;</span>
+                                    <span class="struct-desc">文本运行</span>
+                                </div>
+                                <div class="structure-item">
+                                    <span class="struct-tag">&lt;w:t&gt;</span>
+                                    <span class="struct-desc">文本内容</span>
+                                </div>
+                                <div class="structure-item">
+                                    <span class="struct-tag">&lt;w:tbl&gt;</span>
+                                    <span class="struct-desc">表格</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="analysis-example">
+                            <div class="example-header">
+                                <span class="example-title">完整文档示例</span>
+                            </div>
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"&gt;
+  &lt;w:body&gt;
+    &lt;!-- 标题段落 --&gt;
+    &lt;w:p&gt;
+      &lt;w:pPr&gt;
+        &lt;w:pStyle w:val="Heading1"/&gt;
+        &lt;w:spacing w:before="240" w:after="120"/&gt;
+      &lt;/w:pPr&gt;
+      &lt;w:r&gt;
+        &lt;w:rPr&gt;
+          &lt;w:b/&gt;
+          &lt;w:sz w:val="32"/&gt;
+        &lt;/w:rPr&gt;
+        &lt;w:t&gt;欢迎使用DOCX文件格式&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+    
+    &lt;!-- 普通段落 --&gt;
+    &lt;w:p&gt;
+      &lt;w:pPr&gt;
+        &lt;w:spacing w:after="120"/&gt;
+      &lt;/w:pPr&gt;
+      &lt;w:r&gt;
+        &lt;w:rPr&gt;
+          &lt;w:sz w:val="24"/&gt;
+        &lt;/w:rPr&gt;
+        &lt;w:t&gt;这是一个标准的段落文本。DOCX格式基于XML，可以方便地进行程序化处理。&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+    
+    &lt;!-- 包含格式的段落 --&gt;
+    &lt;w:p&gt;
+      &lt;w:pPr&gt;
+        &lt;w:ind w:firstLine="420"/&gt;  &lt;!-- 首行缩进 --&gt;
+      &lt;/w:pPr&gt;
+      &lt;w:r&gt;
+        &lt;w:rPr&gt;
+          &lt;w:b/&gt;           &lt;!-- 加粗 --&gt;
+          &lt;w:color w:val="FF0000"/&gt;  &lt;!-- 红色 --&gt;
+          &lt;w:sz w:val="28"/&gt;
+        &lt;/w:rPr&gt;
+        &lt;w:t&gt;这段文字应用了格式：加粗、红色、字号14pt。&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+    
+    &lt;!-- 表格示例 --&gt;
+    &lt;w:tbl&gt;
+      &lt;w:tblPr&gt;
+        &lt;w:tblW w:w="0" w:type="auto"/&gt;
+        &lt;w:tblBorders&gt;
+          &lt;w:top w:val="single" w:sz="4"/&gt;
+          &lt;w:left w:val="single" w:sz="4"/&gt;
+          &lt;w:bottom w:val="single" w:sz="4"/&gt;
+          &lt;w:right w:val="single" w:sz="4"/&gt;
+        &lt;/w:tblBorders&gt;
+      &lt;/w:tblPr&gt;
+      &lt;w:tr&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;姓名&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;年龄&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+      &lt;/w:tr&gt;
+      &lt;w:tr&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;张三&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;25&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+      &lt;/w:tr&gt;
+    &lt;/w:tbl&gt;
+  &lt;/w:body&gt;
+&lt;/w:document&gt;</pre>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- word/styles.xml -->
+                <article class="analysis-item">
+                    <div class="analysis-header">
+                        <span class="analysis-icon">🎨</span>
+                        <h3 class="analysis-title">word/styles.xml</h3>
+                        <span class="analysis-badge">重要</span>
+                    </div>
+                    <div class="analysis-content">
+                        <p class="analysis-desc">样式定义文件，定义文档中使用的所有样式。包括段落样式、字符样式、表格样式、列表样式等。</p>
+                        
+                        <div class="analysis-section">
+                            <h4 class="section-heading">样式类型</h4>
+                            <ul class="element-list">
+                                <li><code>paragraph</code> - 段落样式</li>
+                                <li><code>character</code> - 字符样式</li>
+                                <li><code>table</code> - 表格样式</li>
+                                <li><code>numbering</code> - 编号样式</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-example">
+                            <div class="example-header">
+                                <span class="example-title">样式定义示例</span>
+                            </div>
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"&gt;
+  &lt;!-- 默认样式 --&gt;
+  &lt;w:docDefaults&gt;
+    &lt;w:rPrDefault&gt;
+      &lt;w:rPr&gt;
+        &lt;w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:eastAsia="宋体"/&gt;
+        &lt;w:sz w:val="24"/&gt;  &lt;!-- 12pt --&gt;
+        &lt;w:color w:val="000000"/&gt;
+      &lt;/w:rPr&gt;
+    &lt;/w:rPrDefault&gt;
+    &lt;w:pPrDefault&gt;
+      &lt;w:pPr&gt;
+        &lt;w:spacing w:after="120"/&gt;
+      &lt;/w:pPr&gt;
+    &lt;/w:pPrDefault&gt;
+  &lt;/w:docDefaults&gt;
+  
+  &lt;!-- 标题1样式 --&gt;
+  &lt;w:style w:type="paragraph" w:styleId="Heading1"&gt;
+    &lt;w:name w:val="heading 1"/&gt;
+    &lt;w:basedOn w:val="Normal"/&gt;
+    &lt;w:next w:val="Normal"/&gt;
+    &lt;w:linked w:val="Heading1Char"/&gt;
+    &lt;w:uiPriority w:val="9"/&gt;
+    &lt;w:qFormat/&gt;
+    &lt;w:rPr&gt;
+      &lt;w:b/&gt;
+      &lt;w:sz w:val="32"/&gt;  &lt;!-- 16pt --&gt;
+      &lt;w:color w:val="2E74B5"/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:pPr&gt;
+      &lt;w:spacing w:before="240" w:after="120"/&gt;
+      &lt;w:outlineLvl w:val="0"/&gt;
+    &lt;/w:pPr&gt;
+  &lt;/w:style&gt;
+  
+  &lt;!-- 标题2样式 --&gt;
+  &lt;w:style w:type="paragraph" w:styleId="Heading2"&gt;
+    &lt;w:name w:val="heading 2"/&gt;
+    &lt;w:basedOn w:val="Normal"/&gt;
+    &lt;w:next w:val="Normal"/&gt;
+    &lt;w:linked w:val="Heading2Char"/&gt;
+    &lt;w:uiPriority w:val="9"/&gt;
+    &lt;w:unhideWhenUsed/&gt;
+    &lt;w:qFormat/&gt;
+    &lt;w:rPr&gt;
+      &lt;w:b/&gt;
+      &lt;w:sz w:val="28"/&gt;  &lt;!-- 14pt --&gt;
+      &lt;w:color w:val="2E74B5"/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:pPr&gt;
+      &lt;w:spacing w:before="200" w:after="120"/&gt;
+      &lt;w:outlineLvl w:val="1"/&gt;
+    &lt;/w:pPr&gt;
+  &lt;/w:style&gt;
+  
+  &lt;!-- 引用样式 --&gt;
+  &lt;w:style w:type="paragraph" w:styleId="Quote"&gt;
+    &lt;w:name w:val="Quote"/&gt;
+    &lt;w:basedOn w:val="Normal"/&gt;
+    &lt;w:rPr&gt;
+      &lt;w:color w:val="595959"/&gt;
+      &lt;w:sz w:val="22"/&gt;  &lt;!-- 11pt --&gt;
+      &lt;w:i/&gt;  &lt;!-- 斜体 --&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:pPr&gt;
+      &lt;w:ind w:left="720" w:right="720"/&gt;
+      &lt;w:spacing w:before="120" w:after="120"/&gt;
+    &lt;/w:pPr&gt;
+  &lt;/w:style&gt;
+&lt;/w:styles&gt;</pre>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- docProps/ -->
+                <article class="analysis-item">
+                    <div class="analysis-header">
+                        <span class="analysis-icon">📊</span>
+                        <h3 class="analysis-title">docProps/</h3>
+                        <span class="analysis-badge">元数据</span>
+                    </div>
+                    <div class="analysis-content">
+                        <p class="analysis-desc">文档属性目录，包含文档的元数据信息，如作者、标题、创建时间、修改时间等。</p>
+                        
+                        <div class="analysis-section">
+                            <h4 class="section-heading">主要文件</h4>
+                            <ul class="element-list">
+                                <li><code>core.xml</code> - 核心属性（作者、标题、创建时间等）</li>
+                                <li><code>app.xml</code> - 应用属性（页数、字数、版本等）</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-example">
+                            <div class="example-header">
+                                <span class="example-title">core.xml 示例</span>
+                            </div>
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" 
+                    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+                    xmlns:dcterms="http://purl.org/dc/terms/" 
+                    xmlns:dcmitype="http://purl.org/dc/dcmitype/" 
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;dc:title&gt;DOCX文件结构详解&lt;/dc:title&gt;
+  &lt;dc:subject&gt;Microsoft Office Open XML格式&lt;/dc:subject&gt;
+  &lt;dc:creator&gt;技术文档编写者&lt;/dc:creator&gt;
+  &lt;cp:keywords&gt;DOCX, XML, Office, Open XML&lt;/cp:keywords&gt;
+  &lt;dc:description&gt;详细介绍DOCX文件的内部结构和组成&lt;/dc:description&gt;
+  &lt;dcterms:created xsi:type="dcterms:W3CDTF"&gt;2026-01-29T00:00:00Z&lt;/dcterms:created&gt;
+  &lt;dcterms:modified xsi:type="dcterms:W3CDTF"&gt;2026-01-29T00:00:00Z&lt;/dcterms:modified&gt;
+&lt;/cp:coreProperties&gt;</pre>
+                        </div>
+                        
+                        <div class="analysis-example">
+                            <div class="example-header">
+                                <span class="example-title">app.xml 示例</span>
+                            </div>
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" 
+           xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"&gt;
+  &lt;Template&gt;Normal.dotm&lt;/Template&gt;
+  &lt;TotalTime&gt;30&lt;/TotalTime&gt;
+  &lt;Pages&gt;5&lt;/Pages&gt;
+  &lt;Words&gt;1200&lt;/Words&gt;
+  &lt;Characters&gt;6800&lt;/Characters&gt;
+  &lt;Application&gt;Microsoft Office Word&lt;/Application&gt;
+  &lt;DocSecurity&gt;0&lt;/DocSecurity&gt;
+  &lt;Lines&gt;56&lt;/Lines&gt;
+  &lt;Paragraphs&gt;16&lt;/Paragraphs&gt;
+  &lt;ScaleCrop&gt;false&lt;/ScaleCrop&gt;
+  &lt;Company&gt;技术文档中心&lt;/Company&gt;
+  &lt;LinksUpToDate&gt;false&lt;/LinksUpToDate&gt;
+  &lt;CharactersWithSpaces&gt;7950&lt;/CharactersWithSpaces&gt;
+  &lt;SharedDoc&gt;false&lt;/SharedDoc&gt;
+  &lt;HyperlinksChanged&gt;false&lt;/HyperlinksChanged&gt;
+  &lt;AppVersion&gt;16.0000&lt;/AppVersion&gt;
+&lt;/Properties&gt;</pre>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于</h3>
+                    <p>深入了解DOCX文件结构，掌握Office Open XML格式的核心技术</p>
+                </div>
+                <div class="footer-section">
+                    <h3>导航</h3>
+                    <ul>
+                        <li><a href="../docx-structure.html">主页</a></li>
+                        <li><a href="structure-detail.html">结构详解</a></li>
+                        <li><a href="components.html">组件说明</a></li>
+                        <li><a href="examples.html">示例展示</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>相关标准</h3>
+                    <ul>
+                        <li>ECMA-376</li>
+                        <li>ISO/IEC 29500</li>
+                        <li>Office Open XML</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DOCX文件结构详解. 纯静态网站，无JavaScript依赖</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

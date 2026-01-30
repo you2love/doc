@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Python和Go处理DOCX文件代码示例 - 详细介绍如何使用Python和Go操作DOCX文件">
+    <meta name="keywords" content="Python, Go, DOCX, 代码示例, 编程">
+    <title>代码示例 | DOCX文件结构详解</title>
+    <link rel="stylesheet" href="../css/modern-style.css">
+    <link rel="stylesheet" href="../css/docx-structure.css">
+    <link rel="stylesheet" href="../css/components-examples.css">
+    <link rel="stylesheet" href="../css/code-examples.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>📄 DOCX文件结构详解</h1>
+                    <span class="tagline">Microsoft Office Open XML格式完全指南</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="../docx-structure.html">主页</a>
+                    <a href="structure-detail.html">结构详解</a>
+                    <a href="components.html">组件说明</a>
+                    <a href="examples.html">示例展示</a>
+                    <a href="code-examples.html" class="active">代码示例</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="page-header-docx">
+            <div class="container">
+                <h1 class="page-title">💻 Python和Go代码示例</h1>
+                <p class="page-subtitle">详细讲解如何使用Python和Go语言处理DOCX文件</p>
+            </div>
+        </section>
+
+        <!-- Python部分 -->
+        <section class="language-section">
+            <div class="container">
+                <div class="language-header">
+                    <div class="language-icon">🐍</div>
+                    <div class="language-info">
+                        <h2 class="language-title">Python处理DOCX文件</h2>
+                        <p class="language-desc">使用python-docx库轻松操作DOCX文件</p>
+                    </div>
+                    <div class="language-badge">推荐</div>
+                </div>
+
+                <!-- Python安装 -->
+                <div class="code-section">
+                    <h3 class="section-heading">1. 安装python-docx库</h3>
+                    <div class="code-block">
+                        <pre class="code-full"># 使用pip安装
+pip install python-docx
+
+# 或者使用conda
+conda install -c conda-forge python-docx</pre>
+                    </div>
+                </div>
+
+                <!-- Python创建文档 -->
+                <div class="code-section">
+                    <h3 class="section-heading">2. 创建新文档</h3>
+                    <div class="code-block">
+                        <pre class="code-full">from docx import Document
+from docx.shared import Inches, Pt, RGBColor
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+
+# 创建新文档
+doc = Document()
+
+# 添加标题
+doc.add_heading('欢迎使用python-docx', level=1)
+
+# 添加段落
+paragraph = doc.add_paragraph('这是一个普通的段落文本。')
+
+# 添加带格式的段落
+formatted_para = doc.add_paragraph()
+run = formatted_para.add_run('这是')
+run.bold = True
+run.add_run('加粗的')
+run.italic = True
+run.add_run('和斜体的文本。')
+
+# 设置字体大小和颜色
+run.font.size = Pt(14)
+run.font.color.rgb = RGBColor(255, 0, 0)
+
+# 添加标题
+doc.add_heading('示例表格', level=2)
+
+# 添加表格
+table = doc.add_table(rows=3, cols=3)
+table.style = 'Light Grid Accent 1'
+
+# 设置表头
+header_cells = table.rows[0].cells
+header_cells[0].text = '姓名'
+header_cells[1].text = '年龄'
+header_cells[2].text = '职业'
+
+# 填充数据
+table.rows[1].cells[0].text = '张三'
+table.rows[1].cells[1].text = '25'
+table.rows[1].cells[2].text = '工程师'
+
+table.rows[2].cells[0].text = '李四'
+table.rows[2].cells[1].text = '30'
+table.rows[2].cells[2].text = '设计师'
+
+# 添加图片
+doc.add_heading('添加图片', level=2)
+doc.add_picture('image.png', width=Inches(4.0))
+
+# 保存文档
+doc.save('example.docx')
+print('文档创建成功！')</pre>
+                    </div>
+                </div>
+
+                <!-- Python读取文档 -->
+                <div class="code-section">
+                    <h3 class="section-heading">3. 读取文档内容</h3>
+                    <div class="code-block">
+                        <pre class="code-full">from docx import Document
+
+# 打开现有文档
+doc = Document('example.docx')
+
+# 读取所有段落
+print('=== 所有段落 ===')
+for para in doc.paragraphs:
+    print(para.text)
+
+# 读取所有表格
+print('\n=== 所有表格 ===')
+for table in doc.tables:
+    for row in table.rows:
+        row_data = [cell.text for cell in row.cells]
+        print(row_data)
+
+# 读取特定样式的内容
+print('\n=== 所有标题 ===')
+for para in doc.paragraphs:
+    if para.style.name.startswith('Heading'):
+        print(f'{para.style.name}: {para.text}')
+
+# 获取文档属性
+print('\n=== 文档属性 ===')
+core_props = doc.core_properties
+print(f'标题: {core_props.title}')
+print(f'作者: {core_props.author}')
+print(f'创建时间: {core_props.created}')
+print(f'修改时间: {core_props.modified}')</pre>
+                    </div>
+                </div>
+
+                <!-- Python修改文档 -->
+                <div class="code-section">
+                    <h3 class="section-heading">4. 修改现有文档</h3>
+                    <div class="code-block">
+                        <pre class="code-full">from docx import Document
+from docx.shared import Pt, RGBColor
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+
+# 打开现有文档
+doc = Document('example.docx')
+
+# 修改段落文本
+for para in doc.paragraphs:
+    if '欢迎使用' in para.text:
+        # 清除原有内容
+        para.clear()
+        # 添加新文本
+        run = para.add_run('欢迎修改文档')
+        run.bold = True
+        run.font.color.rgb = RGBColor(0, 102, 204)
+
+# 添加新段落
+new_para = doc.add_paragraph('这是新添加的段落', style='Intense Quote')
+
+# 修改表格数据
+for table in doc.tables:
+    for row in table.rows:
+        for cell in row.cells:
+            if '张三' in cell.text:
+                cell.text = '王五'
+
+# 修改文档属性
+doc.core_properties.title = '修改后的文档'
+doc.core_properties.author = '新作者'
+
+# 保存修改
+doc.save('modified.docx')
+print('文档修改完成！')</pre>
+                    </div>
+                </div>
+
+                <!-- Python高级功能 -->
+                <div class="code-section">
+                    <h3 class="section-heading">5. 高级功能</h3>
+                    <div class="code-block">
+                        <pre class="code-full">from docx import Document
+from docx.shared import Pt, RGBColor, Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml.ns import qn
+
+# 创建文档
+doc = Document()
+
+# 自定义样式
+styles = doc.styles
+style = styles.add_style('CustomStyle', 1)  # 1表示段落样式
+style.font.name = '微软雅黑'
+style.font.size = Pt(12)
+style.font.color.rgb = RGBColor(51, 51, 51)
+style.paragraph_format.line_spacing = 1.5
+
+# 添加分页符
+doc.add_page_break()
+
+# 设置页眉
+section = doc.sections[0]
+header = section.header
+header_para = header.paragraphs[0]
+header_para.text = "这是页眉"
+header_para.style = doc.styles['Header']
+
+# 设置页脚
+footer = section.footer
+footer_para = footer.paragraphs[0]
+footer_para.text = "页码："
+footer_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+# 添加列表
+doc.add_heading('项目列表', level=2)
+for item in ['项目一', '项目二', '项目三']:
+    doc.add_paragraph(item, style='List Bullet')
+
+# 添加有序列表
+doc.add_heading('步骤列表', level=2)
+for i, step in enumerate(['第一步', '第二步', '第三步'], 1):
+    doc.add_paragraph(step, style='List Number')
+
+# 保存
+doc.save('advanced.docx')
+print('高级功能文档创建完成！')</pre>
+                    </div>
+                </div>
+
+                <!-- Python批量处理 -->
+                <div class="code-section">
+                    <h3 class="section-heading">6. 批量处理文档</h3>
+                    <div class="code-block">
+                        <pre class="code-full">from docx import Document
+import os
+
+def batch_replace_text(folder_path, old_text, new_text):
+    """批量替换文件夹中所有DOCX文件的文本"""
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.docx'):
+            filepath = os.path.join(folder_path, filename)
+            try:
+                doc = Document(filepath)
+                modified = False
+                
+                # 替换段落中的文本
+                for para in doc.paragraphs:
+                    if old_text in para.text:
+                        for run in para.runs:
+                            if old_text in run.text:
+                                run.text = run.text.replace(old_text, new_text)
+                                modified = True
+                
+                # 替换表格中的文本
+                for table in doc.tables:
+                    for row in table.rows:
+                        for cell in row.cells:
+                            if old_text in cell.text:
+                                cell.text = cell.text.replace(old_text, new_text)
+                                modified = True
+                
+                # 如果有修改，保存文档
+                if modified:
+                    doc.save(filepath)
+                    print(f'已修改: {filename}')
+                    
+            except Exception as e:
+                print(f'处理 {filename} 时出错: {e}')
+
+# 使用示例
+# batch_replace_text('./documents', '旧文本', '新文本')
+
+def extract_all_text(folder_path, output_file):
+    """提取文件夹中所有DOCX文件的文本"""
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for filename in os.listdir(folder_path):
+            if filename.endswith('.docx'):
+                filepath = os.path.join(folder_path, filename)
+                try:
+                    doc = Document(filepath)
+                    f.write(f'=== {filename} ===\n')
+                    for para in doc.paragraphs:
+                        f.write(para.text + '\n')
+                    f.write('\n')
+                    print(f'已提取: {filename}')
+                except Exception as e:
+                    print(f'提取 {filename} 时出错: {e}')
+
+# 使用示例
+# extract_all_text('./documents', 'output.txt')
+
+print('批量处理函数已定义')</pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Go部分 -->
+        <section class="language-section go-section">
+            <div class="container">
+                <div class="language-header">
+                    <div class="language-icon">🐹</div>
+                    <div class="language-info">
+                        <h2 class="language-title">Go语言处理DOCX文件</h2>
+                        <p class="language-desc">使用unioffice库高效处理DOCX文件</p>
+                    </div>
+                    <div class="language-badge">高效</div>
+                </div>
+
+                <!-- Go安装 -->
+                <div class="code-section">
+                    <h3 class="section-heading">1. 安装unioffice库</h3>
+                    <div class="code-block">
+                        <pre class="code-full"># 使用go get安装
+go get github.com/unidoc/unioffice/document
+
+# 或者使用go install
+go install github.com/unidoc/unioffice/cli/docx@latest</pre>
+                    </div>
+                </div>
+
+                <!-- Go创建文档 -->
+                <div class="code-section">
+                    <h3 class="section-heading">2. 创建新文档</h3>
+                    <div class="code-block">
+                        <pre class="code-full">package main
+
+import (
+    "fmt"
+    "github.com/unidoc/unioffice/color"
+    "github.com/unidoc/unioffice/common"
+    "github.com/unidoc/unioffice/document"
+    "github.com/unidoc/unioffice/measurement"
+    "github.com/unidoc/unioffice/schema/soo/wml"
+)
+
+func main() {
+    // 创建新文档
+    doc := document.New()
+
+    // 添加标题
+    doc.AddParagraph().AddRun().AddText("欢迎使用unioffice").SetStyle("Heading1")
+
+    // 添加段落
+    para := doc.AddParagraph()
+    para.AddRun().AddText("这是一个普通的段落文本。")
+
+    // 添加带格式的文本
+    formattedPara := doc.AddParagraph()
+    run := formattedPara.AddRun()
+    run.AddText("这是")
+    run.Properties().SetBold(true)
+    
+    run = formattedPara.AddRun()
+    run.AddText("加粗的")
+    run.Properties().SetItalic(true)
+    
+    run = formattedPara.AddRun()
+    run.AddText("文本。")
+    run.Properties().SetColor(color.Red)
+
+    // 设置字体大小
+    run.Properties().SetSize(14)
+
+    // 添加表格
+    doc.AddParagraph().AddRun().AddText("示例表格").SetStyle("Heading2")
+
+    table := doc.AddTable()
+    table.Properties().SetWidth(common.Inch * 6)
+    row := table.AddRow()
+    row.AddCell().AddParagraph().AddRun().AddText("姓名")
+    row.AddCell().AddParagraph().AddRun().AddText("年龄")
+    row.AddCell().AddParagraph().AddRun().AddText("职业")
+
+    row = table.AddRow()
+    row.AddCell().AddParagraph().AddRun().AddText("张三")
+    row.AddCell().AddParagraph().AddRun().AddText("25")
+    row.AddCell().AddParagraph().AddRun().AddText("工程师")
+
+    row = table.AddRow()
+    row.AddCell().AddParagraph().AddRun().AddText("李四")
+    row.AddCell().AddParagraph().AddRun().AddText("30")
+    row.AddCell().AddParagraph().AddRun().AddText("设计师")
+
+    // 设置表格样式
+    table.SetStyle("Light Grid Accent 1")
+
+    // 添加图片
+    doc.AddParagraph().AddRun().AddText("添加图片").SetStyle("Heading2")
+    imgPara := doc.AddParagraph()
+    imgRun := imgPara.AddRun()
+    if err := imgRun.AddImage("image.png"); err != nil {
+        fmt.Printf("添加图片失败: %v\n", err)
+    }
+
+    // 保存文档
+    if err := doc.SaveToFile("example.docx"); err != nil {
+        fmt.Printf("保存文档失败: %v\n", err)
+    } else {
+        fmt.Println("文档创建成功！")
+    }
+}</pre>
+                    </div>
+                </div>
+
+                <!-- Go读取文档 -->
+                <div class="code-section">
+                    <h3 class="section-heading">3. 读取文档内容</h3>
+                    <div class="code-block">
+                        <pre class="code-full">package main
+
+import (
+    "fmt"
+    "github.com/unidoc/unioffice/document"
+)
+
+func main() {
+    // 打开现有文档
+    doc, err := document.Open("example.docx")
+    if err != nil {
+        fmt.Printf("打开文档失败: %v\n", err)
+        return
+    }
+
+    // 读取所有段落
+    fmt.Println("=== 所有段落 ===")
+    for _, para := range doc.Paragraphs() {
+        fmt.Println(para.Text())
+    }
+
+    // 读取所有表格
+    fmt.Println("\n=== 所有表格 ===")
+    for _, table := range doc.Tables() {
+        for i, row := range table.Rows() {
+            for j, cell := range row.Cells() {
+                fmt.Printf("表格[%d][%d]: %s\n", i, j, cell.Paragraphs()[0].Text())
+            }
+        }
+    }
+
+    // 读取特定样式的内容
+    fmt.Println("\n=== 所有标题 ===")
+    for _, para := range doc.Paragraphs() {
+        if para.Style() != nil {
+            styleName := para.Style().Name()
+            if styleName == "Heading1" || styleName == "Heading2" {
+                fmt.Printf("%s: %s\n", styleName, para.Text())
+            }
+        }
+    }
+
+    // 获取文档属性
+    fmt.Println("\n=== 文档属性 ===")
+    if appProps := doc.AppProperties(); appProps != nil {
+        fmt.Printf("标题: %s\n", appProps.Title())
+        fmt.Printf("主题: %s\n", appProps.Subject())
+    }
+}</pre>
+                    </div>
+                </div>
+
+                <!-- Go修改文档 -->
+                <div class="code-section">
+                    <h3 class="section-heading">4. 修改现有文档</h3>
+                    <div class="code-block">
+                        <pre class="code-full">package main
+
+import (
+    "fmt"
+    "github.com/unidoc/unioffice/color"
+    "github.com/unidoc/unioffice/document"
+)
+
+func main() {
+    // 打开现有文档
+    doc, err := document.Open("example.docx")
+    if err != nil {
+        fmt.Printf("打开文档失败: %v\n", err)
+        return
+    }
+
+    // 修改段落文本
+    for _, para := range doc.Paragraphs() {
+        text := para.Text()
+        if text == "这是一个普通的段落文本。" {
+            // 清除原有内容
+            para.Clear()
+            // 添加新文本
+            run := para.AddRun()
+            run.AddText("这是修改后的段落")
+            run.Properties().SetBold(true)
+            run.Properties().SetColor(color.RGB(0, 102, 204))
+        }
+    }
+
+    // 修改表格数据
+    for _, table := range doc.Tables() {
+        for _, row := range table.Rows() {
+            for _, cell := range row.Cells() {
+                if len(cell.Paragraphs()) > 0 {
+                    text := cell.Paragraphs()[0].Text()
+                    if text == "张三" {
+                        cell.Paragraphs()[0].Clear()
+                        cell.Paragraphs()[0].AddRun().AddText("王五")
+                    }
+                }
+            }
+        }
+    }
+
+    // 添加新段落
+    newPara := doc.AddParagraph()
+    newPara.AddRun().AddText("这是新添加的段落")
+
+    // 保存修改
+    if err := doc.SaveToFile("modified.docx"); err != nil {
+        fmt.Printf("保存文档失败: %v\n", err)
+    } else {
+        fmt.Println("文档修改完成！")
+    }
+}</pre>
+                    </div>
+                </div>
+
+                <!-- Go高级功能 -->
+                <div class="code-section">
+                    <h3 class="section-heading">5. 高级功能</h3>
+                    <div class="code-block">
+                        <pre class="code-full">package main
+
+import (
+    "fmt"
+    "github.com/unidoc/unioffice/color"
+    "github.com/unidoc/unioffice/common"
+    "github.com/unidoc/unioffice/document"
+    "github.com/unidoc/unioffice/measurement"
+    "github.com/unidoc/unioffice/schema/soo/wml"
+)
+
+func main() {
+    // 创建文档
+    doc := document.New()
+
+    // 添加分页符
+    doc.AddParagraph().AddRun().AddBreak(wml.BreakTypePage)
+
+    // 设置页眉
+    section := doc.Sections()[0]
+    header := section.Header()
+    headerPara := header.AddParagraph()
+    headerPara.AddRun().AddText("这是页眉")
+
+    // 设置页脚
+    footer := section.Footer()
+    footerPara := footer.AddParagraph()
+    footerPara.AddRun().AddText("这是页脚")
+
+    // 添加列表
+    doc.AddParagraph().AddRun().AddText("项目列表").SetStyle("Heading2")
+
+    items := []string{"项目一", "项目二", "项目三"}
+    for _, item := range items {
+        para := doc.AddParagraph()
+        para.Properties().SetNumberingLevel(0)
+        para.Properties().SetNumberingID(1)
+        para.AddRun().AddText(item)
+    }
+
+    // 添加有序列表
+    doc.AddParagraph().AddRun().AddText("步骤列表").SetStyle("Heading2")
+
+    steps := []string{"第一步", "第二步", "第三步"}
+    for i, step := range steps {
+        para := doc.AddParagraph()
+        para.Properties().SetNumberingLevel(0)
+        para.Properties().SetNumberingID(2)
+        para.AddRun().AddText(step)
+    }
+
+    // 设置段落对齐
+    centerPara := doc.AddParagraph()
+    centerPara.Properties().SetAlignment(wml.JcAlignCenter)
+    centerPara.AddRun().AddText("居中对齐的文本")
+
+    // 设置段落缩进
+    indentPara := doc.AddParagraph()
+    indentPara.Properties().SetFirstLineIndent(common.Inch * 0.5)
+    indentPara.AddRun().AddText("首行缩进的文本")
+
+    // 设置行间距
+    spacingPara := doc.AddParagraph()
+    spacingPara.Properties().SetSpacing(wml.ST_DocGrid{Val: wml.ST_DocGridLines240})
+    spacingPara.AddRun().AddText("1.5倍行间距的文本")
+
+    // 保存
+    if err := doc.SaveToFile("advanced.docx"); err != nil {
+        fmt.Printf("保存文档失败: %v\n", err)
+    } else {
+        fmt.Println("高级功能文档创建完成！")
+    }
+}</pre>
+                    </div>
+                </div>
+
+                <!-- Go并发处理 -->
+                <div class="code-section">
+                    <h3 class="section-heading">6. 并发处理文档</h3>
+                    <div class="code-block">
+                        <pre class="code-full">package main
+
+import (
+    "fmt"
+    "os"
+    "path/filepath"
+    "sync"
+    "github.com/unidoc/unioffice/document"
+)
+
+// 并发处理文档
+func processDocument(filename string, wg *sync.WaitGroup, results chan<- string) {
+    defer wg.Done()
+    
+    filepath := filepath.Join("./documents", filename)
+    doc, err := document.Open(filepath)
+    if err != nil {
+        results <- fmt.Sprintf("处理 %s 失败: %v", filename, err)
+        return
+    }
+
+    // 处理文档内容
+    textCount := 0
+    for _, para := range doc.Paragraphs() {
+        textCount += len(para.Text())
+    }
+
+    results <- fmt.Sprintf("处理 %s 完成，文本长度: %d", filename, textCount)
+}
+
+func batchProcess(folderPath string) {
+    files, err := os.ReadDir(folderPath)
+    if err != nil {
+        fmt.Printf("读取文件夹失败: %v\n", err)
+        return
+    }
+
+    var wg sync.WaitGroup
+    results := make(chan string, len(files))
+
+    // 并发处理每个文档
+    for _, file := range files {
+        if !file.IsDir() && filepath.Ext(file.Name()) == ".docx" {
+            wg.Add(1)
+            go processDocument(file.Name(), &wg, results)
+        }
+    }
+
+    // 等待所有goroutine完成
+    go func() {
+        wg.Wait()
+        close(results)
+    }()
+
+    // 收集结果
+    for result := range results {
+        fmt.Println(result)
+    }
+}
+
+func main() {
+    fmt.Println("并发处理文档示例")
+    // batchProcess("./documents")
+    fmt.Println("并发处理函数已定义")
+}</pre>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 对比总结 -->
+        <section class="comparison-section">
+            <div class="container">
+                <h2 class="section-title">Python vs Go 对比</h2>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <div class="comp-header">
+                            <span class="comp-icon">🐍</span>
+                            <h3 class="comp-title">Python</h3>
+                        </div>
+                        <div class="comp-body">
+                            <h4 class="comp-subtitle">优点</h4>
+                            <ul class="comp-list">
+                                <li>✓ 简单易学，语法清晰</li>
+                                <li>✓ 库丰富，功能完善</li>
+                                <li>✓ 开发速度快</li>
+                                <li>✓ 社区活跃，文档齐全</li>
+                            </ul>
+                            <h4 class="comp-subtitle">缺点</h4>
+                            <ul class="comp-list">
+                                <li>✗ 性能相对较低</li>
+                                <li>✗ 内存占用较高</li>
+                                <li>✗ 并发模型有限</li>
+                            </ul>
+                            <h4 class="comp-subtitle">适用场景</h4>
+                            <ul class="comp-list">
+                                <li>• 快速原型开发</li>
+                                <li>• 数据处理和分析</li>
+                                <li>• 自动化脚本</li>
+                                <li>• 小规模文档处理</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <div class="comp-header">
+                            <span class="comp-icon">🐹</span>
+                            <h3 class="comp-title">Go</h3>
+                        </div>
+                        <div class="comp-body">
+                            <h4 class="comp-subtitle">优点</h4>
+                            <ul class="comp-list">
+                                <li>✓ 性能优秀，编译型语言</li>
+                                <li>✓ 内存占用低</li>
+                                <li>✓ 原生支持并发</li>
+                                <li>✓ 部署简单，单文件</li>
+                            </ul>
+                            <h4 class="comp-subtitle">缺点</h4>
+                            <ul class="comp-list">
+                                <li>✗ 学习曲线较陡</li>
+                                <li>✗ 库相对较少</li>
+                                <li>✗ 开发效率较低</li>
+                            </ul>
+                            <h4 class="comp-subtitle">适用场景</h4>
+                            <ul class="comp-list">
+                                <li>• 高性能要求</li>
+                                <li>• 大规模文档处理</li>
+                                <li>• 并发批量处理</li>
+                                <li>• 服务端应用</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recommendation-box">
+                    <h3 class="recommendation-title">💡 推荐建议</h3>
+                    <div class="recommendation-content">
+                        <p><strong>选择Python：</strong>如果您是初学者，需要快速开发，或者处理文档的数量不多，Python是更好的选择。python-docx库功能完善，文档丰富，学习成本低。</p>
+                        <p><strong>选择Go：</strong>如果您需要处理大量文档，对性能有要求，或者需要将文档处理功能集成到高性能服务中，Go是更好的选择。unioffice库性能优秀，支持并发处理。</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于</h3>
+                    <p>深入了解DOCX文件结构，掌握Office Open XML格式的核心技术</p>
+                </div>
+                <div class="footer-section">
+                    <h3>导航</h3>
+                    <ul>
+                        <li><a href="../docx-structure.html">主页</a></li>
+                        <li><a href="structure-detail.html">结构详解</a></li>
+                        <li><a href="components.html">组件说明</a></li>
+                        <li><a href="examples.html">示例展示</a></li>
+                        <li><a href="code-examples.html">代码示例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>相关标准</h3>
+                    <ul>
+                        <li>ECMA-376</li>
+                        <li>ISO/IEC 29500</li>
+                        <li>Office Open XML</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DOCX文件结构详解. 纯静态网站，无JavaScript依赖</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

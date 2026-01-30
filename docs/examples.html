@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DOCX示例展示 - 展示完整的DOCX文件示例和实际应用场景">
+    <meta name="keywords" content="DOCX, 示例, XML, Word, 实例">
+    <title>示例展示 | DOCX文件结构详解</title>
+    <link rel="stylesheet" href="../css/modern-style.css">
+    <link rel="stylesheet" href="../css/docx-structure.css">
+    <link rel="stylesheet" href="../css/components-examples.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>📄 DOCX文件结构详解</h1>
+                    <span class="tagline">Microsoft Office Open XML格式完全指南</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="../docx-structure.html">主页</a>
+                    <a href="structure-detail.html">结构详解</a>
+                    <a href="components.html">组件说明</a>
+                    <a href="examples.html" class="active">示例展示</a>
+                    <a href="code-examples.html">代码示例</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 页面标题 -->
+        <section class="page-header-docx">
+            <div class="container">
+                <h1 class="page-title">📋 DOCX示例展示</h1>
+                <p class="page-subtitle">完整的DOCX文件示例和实际应用场景演示</p>
+            </div>
+        </section>
+
+        <!-- 完整示例 -->
+        <section class="complete-example">
+            <div class="container">
+                <h2 class="section-title">完整文档示例</h2>
+                <p class="example-intro">以下是一个简单的DOCX文档示例，包含标题、段落、格式化文本和表格。</p>
+                
+                <div class="example-preview">
+                    <div class="preview-visual">
+                        <div class="document-preview">
+                            <div class="doc-page">
+                                <h1 class="doc-title">欢迎使用DOCX格式</h1>
+                                <p class="doc-paragraph">这是一个基于XML的文档格式示例。DOCX文件实际上是一个ZIP压缩包，包含多个XML文件。</p>
+                                <p class="doc-paragraph">下面是一个简单的表格：</p>
+                                <table class="doc-table">
+                                    <tr>
+                                        <th>姓名</th>
+                                        <th>年龄</th>
+                                        <th>职业</th>
+                                    </tr>
+                                    <tr>
+                                        <td>张三</td>
+                                        <td>25</td>
+                                        <td>工程师</td>
+                                    </tr>
+                                    <tr>
+                                        <td>李四</td>
+                                        <td>30</td>
+                                        <td>设计师</td>
+                                    </tr>
+                                </table>
+                                <p class="doc-paragraph formatted"><strong>加粗文本</strong> 和 <em>斜体文本</em> 的示例。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-code">
+                        <div class="code-tabs">
+                            <span class="tab active">document.xml</span>
+                            <span class="tab">styles.xml</span>
+                            <span class="tab">[Content_Types].xml</span>
+                        </div>
+                        <div class="code-content">
+                            <pre class="code-full">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+&lt;w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"&gt;
+  &lt;w:body&gt;
+    &lt;!-- 标题 --&gt;
+    &lt;w:p&gt;
+      &lt;w:pPr&gt;
+        &lt;w:pStyle w:val="Heading1"/&gt;
+      &lt;/w:pPr&gt;
+      &lt;w:r&gt;
+        &lt;w:t&gt;欢迎使用DOCX格式&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+    
+    &lt;!-- 段落1 --&gt;
+    &lt;w:p&gt;
+      &lt;w:r&gt;
+        &lt;w:t&gt;这是一个基于XML的文档格式示例。DOCX文件实际上是一个ZIP压缩包，包含多个XML文件。&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+    
+    &lt;!-- 段落2 --&gt;
+    &lt;w:p&gt;
+      &lt;w:r&gt;
+        &lt;w:t&gt;下面是一个简单的表格：&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+    
+    &lt;!-- 表格 --&gt;
+    &lt;w:tbl&gt;
+      &lt;w:tblPr&gt;
+        &lt;w:tblW w:w="0" w:type="auto"/&gt;
+        &lt;w:tblBorders&gt;
+          &lt;w:top w:val="single"/&gt;
+          &lt;w:left w:val="single"/&gt;
+          &lt;w:bottom w:val="single"/&gt;
+          &lt;w:right w:val="single"/&gt;
+        &lt;/w:tblBorders&gt;
+      &lt;/w:tblPr&gt;
+      &lt;w:tr&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;姓名&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;年龄&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;职业&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+      &lt;/w:tr&gt;
+      &lt;w:tr&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;张三&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;25&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;工程师&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+      &lt;/w:tr&gt;
+      &lt;w:tr&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;李四&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;30&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+        &lt;w:tc&gt;
+          &lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;设计师&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;
+        &lt;/w:tc&gt;
+      &lt;/w:tr&gt;
+    &lt;/w:tbl&gt;
+    
+    &lt;!-- 格式化文本 --&gt;
+    &lt;w:p&gt;
+      &lt;w:r&gt;
+        &lt;w:rPr&gt;&lt;w:b/&gt;&lt;/w:rPr&gt;
+        &lt;w:t&gt;加粗文本&lt;/w:t&gt;
+      &lt;/w:r&gt;
+      &lt;w:r&gt;
+        &lt;w:t&gt; 和 &lt;/w:t&gt;
+      &lt;/w:r&gt;
+      &lt;w:r&gt;
+        &lt;w:rPr&gt;&lt;w:i/&gt;&lt;/w:rPr&gt;
+        &lt;w:t&gt;斜体文本&lt;/w:t&gt;
+      &lt;/w:r&gt;
+      &lt;w:r&gt;
+        &lt;w:t&gt; 的示例。&lt;/w:t&gt;
+      &lt;/w:r&gt;
+    &lt;/w:p&gt;
+  &lt;/w:body&gt;
+&lt;/w:document&gt;</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实用场景 -->
+        <section class="use-cases">
+            <div class="container">
+                <h2 class="section-title">实际应用场景</h2>
+                
+                <div class="use-case-grid">
+                    <div class="use-case-card">
+                        <div class="case-icon">📊</div>
+                        <h3 class="case-title">报表生成</h3>
+                        <p class="case-desc">从数据库自动生成销售报表、财务报表等。通过模板替换变量，批量生成专业文档。</p>
+                        <div class="case-example">
+                            <span class="case-label">适用场景</span>
+                            <ul class="case-list">
+                                <li>月度销售报告</li>
+                                <li>财务数据分析</li>
+                                <li>项目进度报告</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <div class="case-icon">📝</div>
+                        <h3 class="case-title">文档模板</h3>
+                        <p class="case-desc">创建可重用的文档模板，支持变量替换和动态内容。用于合同、发票、证书等标准化文档。</p>
+                        <div class="case-example">
+                            <span class="case-label">适用场景</span>
+                            <ul class="case-list">
+                                <li>合同模板</li>
+                                <li>发票生成</li>
+                                <li>证书打印</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <div class="case-icon">🔄</div>
+                        <h3 class="case-title">格式转换</h3>
+                        <p class="case-desc">将DOCX转换为其他格式，如HTML、PDF、Markdown等。实现文档的多平台分发。</p>
+                        <div class="case-example">
+                            <span class="case-label">适用场景</span>
+                            <ul class="case-list">
+                                <li>Web发布</li>
+                                <li>电子书制作</li>
+                                <li>文档归档</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="use-case-card">
+                        <div class="case-icon">🔍</div>
+                        <h3 class="case-title">内容提取</h3>
+                        <p class="case-desc">从DOCX文件中提取文本、表格、图片等内容，用于数据分析或内容管理。</p>
+                        <div class="case-example">
+                            <span class="case-label">适用场景</span>
+                            <ul class="case-list">
+                                <li>文档搜索</li>
+                                <li>内容分析</li>
+                                <li>数据挖掘</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 最佳实践 -->
+        <section class="best-practices">
+            <div class="container">
+                <h2 class="section-title">最佳实践</h2>
+                
+                <div class="practice-list">
+                    <div class="practice-item">
+                        <div class="practice-number">1</div>
+                        <h3 class="practice-title">使用样式而非直接格式化</h3>
+                        <p class="practice-desc">在styles.xml中定义样式，然后在文档中引用这些样式，而不是直接应用格式。这样可以保持文档的一致性，并且更容易维护。</p>
+                        <div class="practice-code">
+                            <span class="code-label">推荐做法</span>
+                            <code>&lt;w:p&gt;&lt;w:pPr&gt;&lt;w:pStyle w:val="Heading1"/&gt;&lt;/w:pPr&gt;&lt;w:r&gt;&lt;w:t&gt;标题&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;</code>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-item">
+                        <div class="practice-number">2</div>
+                        <h3 class="practice-title">正确使用关系引用</h3>
+                        <p class="practice-desc">通过关系（Relationship）引用图片、超链接等外部资源，而不是直接在XML中嵌入数据。这样使文档更加模块化和可维护。</p>
+                        <div class="practice-code">
+                            <span class="code-label">关系示例</span>
+                            <code>&lt;w:drawing&gt;&lt;wp:inline&gt;&lt;a:graphic&gt;&lt;a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"&gt;&lt;pic:pic&gt;&lt;pic:blipFill&gt;&lt;a:blip r:embed="rId4"/&gt;&lt;/pic:blipFill&gt;&lt;/pic:pic&gt;&lt;/a:graphicData&gt;&lt;/a:graphic&gt;&lt;/wp:inline&gt;&lt;/w:drawing&gt;</code>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-item">
+                        <div class="practice-number">3</div>
+                        <h3 class="practice-title">优化文件大小</h3>
+                        <p class="practice-desc">使用压缩的图片格式（如PNG、WebP），避免使用未压缩的BMP。定期清理未使用的样式和关系，减小文件体积。</p>
+                        <div class="practice-code">
+                            <span class="code-label">图片优化</span>
+                            <code>&lt;Default Extension="png" ContentType="image/png"/&gt;
+&lt;Default Extension="webp" ContentType="image/webp"/&gt;</code>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-item">
+                        <div class="practice-number">4</div>
+                        <h3 class="practice-title">保持XML结构清晰</h3>
+                        <p class="practice-desc">合理缩进和格式化XML代码，使用注释说明重要部分。这样有助于调试和维护文档。</p>
+                        <div class="practice-code">
+                            <span class="code-label">清晰结构</span>
+                            <code>&lt;!-- 表格开始 --&gt;
+&lt;w:tbl&gt;
+  &lt;w:tblPr&gt;...&lt;/w:tblPr&gt;
+  &lt;w:tr&gt;...&lt;/w:tr&gt;
+&lt;/w:tbl&gt;
+&lt;!-- 表格结束 --&gt;</code>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-item">
+                        <div class="practice-number">5</div>
+                        <h3 class="practice-title">验证XML有效性</h3>
+                        <p class="practice-desc">在修改DOCX文件后，使用XML验证器检查语法和结构。确保文档可以被Word正常打开和编辑。</p>
+                        <div class="practice-code">
+                            <span class="code-label">验证工具</span>
+                            <code>xmllint --noout document.xml</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section class="faq">
+            <div class="container">
+                <h2 class="section-title">常见问题</h2>
+                
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">❓</span>
+                            <h3 class="faq-title">DOCX和DOC有什么区别？</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>DOC是基于二进制的专有格式，而DOCX是基于XML的开放标准格式。DOCX文件更小、更安全、更容易被程序处理，并且支持跨平台使用。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">❓</span>
+                            <h3 class="faq-title">如何查看DOCX文件的内部结构？</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>将.docx文件的扩展名改为.zip，然后用任何解压软件（如WinRAR、7-Zip）打开。或者直接使用解压软件打开.docx文件，就可以看到内部的XML文件和资源文件。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">❓</span>
+                            <h3 class="faq-title">可以手动编辑DOCX文件吗？</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>可以。解压DOCX文件后，可以使用文本编辑器（如VS Code、Notepad++）编辑XML文件。修改完成后，重新打包成ZIP文件，并将扩展名改回.docx。但要小心保持XML结构的正确性。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">❓</span>
+                            <h3 class="faq-title">DOCX文件支持哪些图片格式？</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>DOCX支持多种图片格式，包括PNG、JPEG、GIF、BMP、TIFF、SVG等。建议使用PNG或JPEG以获得最佳兼容性和文件大小平衡。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-icon">❓</span>
+                            <h3 class="faq-title">如何程序化创建DOCX文件？</h3>
+                        </div>
+                        <div class="faq-answer">
+                            <p>可以使用多种编程语言和库来创建DOCX文件，如Python的python-docx、Java的Apache POI、C#的Open XML SDK等。这些库提供了高级API，无需直接操作XML。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于</h3>
+                    <p>深入了解DOCX文件结构，掌握Office Open XML格式的核心技术</p>
+                </div>
+                <div class="footer-section">
+                    <h3>导航</h3>
+                    <ul>
+                        <li><a href="../docx-structure.html">主页</a></li>
+                        <li><a href="structure-detail.html">结构详解</a></li>
+                        <li><a href="components.html">组件说明</a></li>
+                        <li><a href="examples.html">示例展示</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>相关标准</h3>
+                    <ul>
+                        <li>ECMA-376</li>
+                        <li>ISO/IEC 29500</li>
+                        <li>Office Open XML</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DOCX文件结构详解. 纯静态网站，无JavaScript依赖</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
