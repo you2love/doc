@@ -1,0 +1,71 @@
+/* 代码块折叠功能样式 */
+
+.code-fold {
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+.code-fold-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: var(--bg-tertiary);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.code-fold-header:hover {
+    background: var(--border-color);
+}
+
+.code-fold-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.code-fold-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.code-fold-toggle .icon {
+    transition: transform 0.3s ease;
+}
+
+.code-fold-toggle .icon.collapsed {
+    transform: rotate(-90deg);
+}
+
+.code-fold-content {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.code-fold-content.collapsed {
+    max-height: 0;
+}
+
+.code-fold .code-full {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    max-height: none;
+}
+
+.code-fold .code-full pre {
+    margin: 0;
+    max-height: none;
+}
