@@ -48,20 +48,26 @@
                     <div class="language-icon">🐍</div>
                     <div class="language-info">
                         <h2 class="language-title">Python处理DOCX文件</h2>
-                        <p class="language-desc">使用python-docx库轻松操作DOCX文件</p>
+                        <p class="language-desc">使用python-docx库轻松操作DOCX文件（推荐：python-docx-ng）</p>
                     </div>
                     <div class="language-badge">推荐</div>
                 </div>
 
-                <!-- Python安装 -->
+                <!-- Python库选择 -->
                 <div class="code-section">
-                    <h3 class="section-heading">1. 安装python-docx库</h3>
+                    <h3 class="section-heading">1. Python DOCX库选择</h3>
                     <div class="code-block">
-                        <pre class="code-full"># 使用pip安装
+                        <pre class="code-full"># 主要库介绍
+
+# 1. python-docx - 最流行和稳定的库
 pip install python-docx
 
-# 或者使用conda
-conda install -c conda-forge python-docx</pre>
+# 2. python-docx-ng - python-docx的增强分支（2023年发布）
+# 添加了许多实用功能，持续维护更新
+pip install python-docx-ng
+
+# 3. python-docx-oss - 另一个活跃分支（2024年发布）
+pip install python-docx-oss</pre>
                     </div>
                 </div>
 
@@ -332,19 +338,28 @@ print('批量处理函数已定义')</pre>
                     <div class="language-icon">🐹</div>
                     <div class="language-info">
                         <h2 class="language-title">Go语言处理DOCX文件</h2>
-                        <p class="language-desc">使用unioffice库高效处理DOCX文件</p>
+                        <p class="language-desc">使用unioffice库高效处理DOCX文件（推荐：go-docx v2.0）</p>
                     </div>
                     <div class="language-badge">高效</div>
                 </div>
 
                 <!-- Go安装 -->
                 <div class="code-section">
-                    <h3 class="section-heading">1. 安装unioffice库</h3>
+                    <h3 class="section-heading">1. Go DOCX库选择</h3>
                     <div class="code-block">
-                        <pre class="code-full"># 使用go get安装
+                        <pre class="code-full"># Go语言DOCX库选择
+
+# 1. unioffice - 最成熟稳定的Go库（推荐）
 go get github.com/unidoc/unioffice/document
 
-# 或者使用go install
+# 2. go-docx v2.0.0 - 2025年11月发布生产就绪版本
+# 新增文档读取功能，完全支持创建和修改
+go get github.com/fumiama/go-docx
+
+# 3. docxlib - 轻量级简单库
+go get github.com/fileformat/docs/libgo/docxlib
+
+# 4. unioffice CLI工具
 go install github.com/unidoc/unioffice/cli/docx@latest</pre>
                     </div>
                 </div>
@@ -784,38 +799,5 @@ func main() {
         </section>
 
     </main>
-
-    <!-- 页脚 -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>关于</h3>
-                    <p>深入了解DOCX文件结构，掌握Office Open XML格式的核心技术</p>
-                </div>
-                <div class="footer-section">
-                    <h3>导航</h3>
-                    <ul>
-                        <li><a href="../docx-structure.html">主页</a></li>
-                        <li><a href="structure-detail.html">结构详解</a></li>
-                        <li><a href="components.html">组件说明</a></li>
-                        <li><a href="examples.html">示例展示</a></li>
-                        <li><a href="code-examples.html">代码示例</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>相关标准</h3>
-                    <ul>
-                        <li>ECMA-376</li>
-                        <li>ISO/IEC 29500</li>
-                        <li>Office Open XML</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DOCX文件结构详解. 纯静态网站，无JavaScript依赖</p>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
