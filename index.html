@@ -30,12 +30,74 @@
         </div>
     </header>
 
+    <!-- Hero区域 -->
+    <section class="hero-section">
+        <div class="hero-bg">
+            <div class="hero-pattern"></div>
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    深入理解<span class="highlight">DOCX文件结构</span>
+                </h1>
+                <p class="hero-desc">
+                    DOCX不仅是Word文档，更是ZIP压缩包+XML结构的完美结合。掌握其内部原理，实现文档自动化处理、格式转换、内容提取等高级功能。
+                </p>
+                <div class="hero-actions">
+                    <a href="docs/structure-detail.html" class="btn btn-primary">
+                        <span>开始学习</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="#core-structure" class="btn btn-secondary">
+                        <span>快速预览</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">6</span>
+                        <span class="stat-label">核心文件</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">XML</span>
+                        <span class="stat-label">标准格式</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">ZIP</span>
+                        <span class="stat-label">压缩包</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="zip-visual">
+                    <div class="zip-folder">
+                        <div class="zip-icon">📦</div>
+                        <div class="zip-name">document.docx</div>
+                        <div class="zip-badge">ZIP</div>
+                    </div>
+                    <div class="zip-files">
+                        <div class="zip-file"><span>📋</span>[Content_Types].xml</div>
+                        <div class="zip-file"><span>📁</span>_rels/</div>
+                        <div class="zip-file"><span>📁</span>word/</div>
+                        <div class="zip-file"><span>📁</span>docProps/</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 主要内容区 -->
     <main class="main-content">
         <!-- 什么是DOCX -->
-        <section class="what-is-docx">
+        <section class="what-is-docx" id="what-is-docx">
             <div class="container">
-                <h2 class="section-title">什么是DOCX文件？</h2>
+                <div class="section-header">
+                    <span class="section-tag">基础知识</span>
+                    <h2 class="section-title">什么是DOCX文件？</h2>
+                    <p class="section-subtitle">DOCX是Microsoft Word创建的现代文档格式，基于开放标准构建</p>
+                </div>
                 <div class="intro-grid">
                     <div class="intro-card">
                         <div class="intro-icon">📦</div>
@@ -65,9 +127,13 @@
         </section>
 
         <!-- 核心结构概览 -->
-        <section class="core-structure">
+        <section class="core-structure" id="core-structure">
             <div class="container">
-                <h2 class="section-title">核心结构概览</h2>
+                <div class="section-header">
+                    <span class="section-tag">核心内容</span>
+                    <h2 class="section-title">核心结构概览</h2>
+                    <p class="section-subtitle">DOCX文件的内部层次结构</p>
+                </div>
                 <div class="structure-tree">
                     <div class="tree-root">
                         <div class="tree-item root">
@@ -163,9 +229,13 @@
         </section>
 
         <!-- 主要组件说明 -->
-        <section class="main-components">
+        <section class="main-components" id="main-components">
             <div class="container">
-                <h2 class="section-title">主要组件说明</h2>
+                <div class="section-header">
+                    <span class="section-tag">组件详解</span>
+                    <h2 class="section-title">主要组件说明</h2>
+                    <p class="section-subtitle">DOCX文件中的关键XML组件</p>
+                </div>
                 <div class="components-grid">
                     <div class="component-card">
                         <div class="component-header">
@@ -258,9 +328,13 @@
         </section>
 
         <!-- XML结构示例 -->
-        <section class="xml-example">
+        <section class="xml-example" id="xml-example">
             <div class="container">
-                <h2 class="section-title">XML结构示例</h2>
+                <div class="section-header">
+                    <span class="section-tag">代码示例</span>
+                    <h2 class="section-title">XML结构示例</h2>
+                    <p class="section-subtitle">直观了解DOCX的XML组织方式</p>
+                </div>
                 <div class="xml-demo">
                     <div class="xml-panel">
                         <div class="panel-header">
@@ -338,9 +412,13 @@
         </section>
 
         <!-- 为什么理解DOCX结构 -->
-        <section class="why-understand">
+        <section class="why-understand" id="why-understand">
             <div class="container">
-                <h2 class="section-title">为什么理解DOCX结构？</h2>
+                <div class="section-header">
+                    <span class="section-tag">实用价值</span>
+                    <h2 class="section-title">为什么理解DOCX结构？</h2>
+                    <p class="section-subtitle">掌握DOCX内部结构带来的实际好处</p>
+                </div>
                 <div class="reasons-grid">
                     <div class="reason-card">
                         <div class="reason-number">01</div>
@@ -382,9 +460,13 @@
         </section>
 
         <!-- 工具和资源 -->
-        <section class="tools-resources">
+        <section class="tools-resources" id="tools-resources">
             <div class="container">
-                <h2 class="section-title">工具和资源</h2>
+                <div class="section-header">
+                    <span class="section-tag">开发资源</span>
+                    <h2 class="section-title">工具和资源</h2>
+                    <p class="section-subtitle">帮助您更好地处理DOCX文件的工具</p>
+                </div>
                 <div class="tools-grid">
                     <div class="tool-card">
                         <div class="tool-icon">🗜️</div>
