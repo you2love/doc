@@ -114,12 +114,12 @@
     font-family: var(--font-family-mono);
     font-size: 0.875rem;
     line-height: 1.8;
-    color: var(--text-primary);
+    color: #1f2937;
     margin: 0;
     padding: var(--spacing-xl);
     overflow-x: auto;
     white-space: pre;
-    background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
+    background: #f0f4ff;
 }
 
 /* ========================================

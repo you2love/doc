@@ -1,519 +1,200 @@
 /* ========================================
-   DOCX文件结构专用样式
-   为DOCX文件结构展示提供专业的视觉效果
-   ======================================== */
-
-/* ========================================
-   什么是DOCX
-   ======================================== */
-.what-is-docx {
+    完整文件结构
+    ======================================== */
+.full-structure {
     padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-primary);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
 }
 
-.intro-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+.structure-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: var(--spacing-xl);
+    padding: var(--spacing-2xl);
 }
 
-.intro-card {
-    background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-2xl);
-    text-align: center;
+.diagram-box {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
 }
 
-.intro-card::before {
+.diagram-box::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     height: 4px;
     background: var(--gradient-primary);
 }
 
-.intro-card:hover {
+.diagram-box:hover {
+    transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
-    transform: translateY(-8px);
+    border-color: var(--primary-color);
 }
 
-.intro-icon {
-    font-size: 4rem;
-    margin-bottom: var(--spacing-lg);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.intro-card h3 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: var(--spacing-md);
-    color: var(--text-primary);
-}
-
-.intro-card p {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-/* ========================================
-   核心结构树
-   ======================================== */
-.core-structure {
-    padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-secondary);
-}
-
-.structure-tree {
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-3xl);
-    overflow-x: auto;
-    box-shadow: var(--shadow-md);
-}
-
-.tree-root {
-    min-width: 600px;
-}
-
-.tree-item {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-fast);
-    cursor: pointer;
-    position: relative;
-}
-
-.tree-item:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
-}
-
-.tree-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 0;
-    background: var(--gradient-primary);
-    transition: all var(--transition-base);
-    border-radius: var(--radius-full);
-}
-
-.tree-item:hover::before {
-    height: 60%;
-}
-
-.tree-item.root {
-    background: var(--gradient-primary);
+.diagram-box.root-box {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border: none;
     color: white;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
-    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
 }
 
-.tree-item.root::before {
+.diagram-box.root-box::before {
     display: none;
 }
 
-.tree-item.root .tree-desc {
-    color: rgba(255, 255, 255, 0.9);
+.diagram-box.root-box:hover {
+    transform: translateY(-4px) scale(1.02);
 }
 
-.tree-icon {
-    font-size: 1.75rem;
+.diagram-box.root-box .box-icon {
+    font-size: 2.5rem;
+}
+
+.diagram-box.root-box .box-title {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.diagram-box.root-box .box-desc {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.box-icon {
+    font-size: 2rem;
     flex-shrink: 0;
 }
 
-.tree-name {
-    font-weight: 700;
-    font-family: var(--font-family-mono);
-    font-size: 1rem;
+.box-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
 }
 
-.tree-desc {
+.box-title {
+    font-family: var(--font-family-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.box-desc {
+    font-size: 0.875rem;
     color: var(--text-tertiary);
-    font-size: 0.875rem;
-    margin-left: auto;
 }
 
-.tree-level-1,
-.tree-level-2 {
-    padding-left: var(--spacing-xl);
-}
-
-.tree-level-2 {
+.diagram-level {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xl);
     padding-left: var(--spacing-3xl);
-}
-
-.tree-item.folder {
-    margin-bottom: var(--spacing-sm);
-}
-
-.tree-item.file {
-    padding-left: var(--spacing-2xl);
-}
-
-/* ========================================
-   主要组件
-   ======================================== */
-.main-components {
-    padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-primary);
-}
-
-.components-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: var(--spacing-xl);
-}
-
-.component-card {
-    background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-    transition: all var(--transition-base);
-}
-
-.component-card:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-4px);
-}
-
-.component-header {
-    background: var(--gradient-primary);
-    padding: var(--spacing-lg) var(--spacing-xl);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-}
-
-.component-icon {
-    font-size: 2rem;
-}
-
-.component-title {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: white;
-    margin: 0;
-}
-
-.component-content {
-    padding: var(--spacing-xl);
-}
-
-.component-desc {
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.7;
-    font-size: 1.05rem;
-}
-
-.component-example {
-    background-color: var(--bg-primary);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    border-left: 4px solid var(--primary-color);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.example-label {
-    display: block;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
-    font-size: 0.875rem;
-}
-
-.code-block {
-    display: block;
-    font-family: var(--font-family-mono);
-    font-size: 0.875rem;
-    color: var(--primary-color);
-    background-color: var(--bg-tertiary);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    line-height: 1.6;
-}
-
-/* ========================================
-   XML示例
-   ======================================== */
-.xml-example {
-    padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-secondary);
-}
-
-.xml-demo {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: var(--spacing-xl);
-}
-
-.xml-panel {
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-}
-
-.panel-header {
-    background: var(--gradient-primary);
-    color: white;
-    padding: var(--spacing-lg) var(--spacing-xl);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.panel-title {
-    font-weight: 800;
-    font-size: 1rem;
-}
-
-.panel-badge {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 700;
-    font-family: var(--font-family-mono);
-}
-
-.panel-content {
-    padding: var(--spacing-xl);
-    overflow-x: auto;
-}
-
-.xml-code {
-    font-family: var(--font-family-mono);
-    font-size: 0.875rem;
-    line-height: 2;
-    color: var(--text-primary);
-    margin: 0;
-    white-space: pre;
-    overflow-x: auto;
-}
-
-/* ========================================
-   为什么理解DOCX结构
-   ======================================== */
-.why-understand {
-    padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-primary);
-}
-
-.reasons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-xl);
-}
-
-.reason-card {
-    background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-2xl);
     position: relative;
-    overflow: hidden;
-    transition: all var(--transition-base);
 }
 
-.reason-card::before {
+.diagram-level::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
+    left: 50%;
+    top: -20px;
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(180deg, #6366f1, #8b5cf6);
 }
 
-.reason-card:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-8px);
+.diagram-box.folder-box {
+    background: linear-gradient(135deg, var(--bg-primary), var(--bg-tertiary));
+    border-color: var(--primary-light);
 }
 
-.reason-number {
-    position: absolute;
-    top: var(--spacing-lg);
-    right: var(--spacing-lg);
-    font-size: 4rem;
-    font-weight: 900;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
+.diagram-box.folder-box::before {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
 }
 
-.reason-title {
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin-bottom: var(--spacing-md);
-    color: var(--text-primary);
-    padding-right: var(--spacing-3xl);
+.diagram-box.file-box {
+    background: var(--bg-primary);
+    border-color: var(--accent-color);
 }
 
-.reason-desc {
+.diagram-box.file-box::before {
+    background: var(--accent-color);
+}
+
+.sub-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px dashed var(--border-color);
+}
+
+.sub-box {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family-mono);
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    transition: all var(--transition-fast);
 }
 
-/* ========================================
-   工具和资源
-   ======================================== */
-.tools-resources {
-    padding: var(--spacing-4xl) 0;
-    background-color: var(--bg-secondary);
+.sub-box:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+    border-color: var(--primary-color);
+    transform: scale(1.05);
 }
 
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-xl);
+.sub-icon {
+    font-size: 0.875rem;
 }
 
-.tool-card {
-    background-color: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    padding: var(--spacing-2xl);
-    text-align: center;
-    transition: all var(--transition-base);
+.sub-name {
+    font-weight: 600;
 }
 
-.tool-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-}
-
-.tool-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-lg);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.tool-title {
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin-bottom: var(--spacing-md);
-    color: var(--text-primary);
-}
-
-.tool-desc {
-    color: var(--text-secondary);
-    line-height: 1.7;
-}
-
-/* ========================================
-   响应式设计 - DOCX结构页面
-   ======================================== */
 @media (max-width: 1024px) {
-    .components-grid {
-        grid-template-columns: 1fr;
+    .diagram-level {
+        padding-left: 0;
     }
     
-    .xml-demo {
-        grid-template-columns: 1fr;
+    .diagram-level::before {
+        display: none;
     }
 }
 
 @media (max-width: 768px) {
-    .intro-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .structure-tree {
+    .structure-diagram {
         padding: var(--spacing-lg);
     }
     
-    .tree-root {
-        min-width: 100%;
-    }
-    
-    .tree-level-1,
-    .tree-level-2 {
-        padding-left: var(--spacing-md);
-    }
-    
-    .tree-item.file {
-        padding-left: var(--spacing-lg);
-    }
-    
-    .reasons-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .tools-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .tree-item {
-        flex-wrap: wrap;
-    }
-    
-    .tree-desc {
+    .diagram-box {
         width: 100%;
-        padding-left: 2rem;
     }
     
-    .xml-code {
-        font-size: 0.75rem;
+    .diagram-level {
+        flex-direction: column;
+        align-items: stretch;
     }
     
-    .code-block {
-        font-size: 0.75rem;
-    }
-}
-
-/* ========================================
-   打印样式 - DOCX结构页面
-   ======================================== */
-@media print {
-    .site-header,
-    .site-footer,
-    .hero-section-structure,
-    .tools-resources {
-        display: none;
-    }
-    
-    .structure-tree {
-        box-shadow: none;
-        border: 1px solid #ccc;
-    }
-    
-    .component-card,
-    .xml-panel,
-    .reason-card,
-    .tool-card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ccc;
-        margin-bottom: 1rem;
+    .sub-items {
+        justify-content: flex-start;
     }
 }
