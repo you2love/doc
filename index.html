@@ -244,11 +244,11 @@
                         </div>
                         <div class="component-content">
                             <p class="component-desc">定义文档中所有部分的内容类型，告诉应用程序如何处理不同类型的文件。</p>
-                            <div class="component-example">
-                                <span class="example-label">示例：</span>
+                            
+                                
                                 <code class="code-block">&lt;Default Extension="xml" ContentType="application/xml"/&gt;
 &lt;Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/&gt;</code>
-                            </div>
+                        
                         </div>
                     </div>
                     
@@ -259,10 +259,9 @@
                         </div>
                         <div class="component-content">
                             <p class="component-desc">存储关系定义，描述文档内部各部分之间的关联关系。</p>
-                            <div class="component-example">
-                                <span class="example-label">示例：</span>
+                            
                                 <code class="code-block">&lt;Relationship Id="rId1" Type="http://.../officeDocument" Target="word/document.xml"/&gt;</code>
-                            </div>
+                            
                         </div>
                     </div>
                     
@@ -273,10 +272,9 @@
                         </div>
                         <div class="component-content">
                             <p class="component-desc">文档的主要内容，包含文本、段落、表格、图片等所有可见内容。</p>
-                            <div class="component-example">
-                                <span class="example-label">示例：</span>
+                            
                                 <code class="code-block">&lt;w:p&gt;&lt;w:r&gt;&lt;w:t&gt;Hello World&lt;/w:t&gt;&lt;/w:r&gt;&lt;/w:p&gt;</code>
-                            </div>
+                            
                         </div>
                     </div>
                     
@@ -287,10 +285,9 @@
                         </div>
                         <div class="component-content">
                             <p class="component-desc">定义文档中使用的样式，包括字体、大小、颜色、段落格式等。</p>
-                            <div class="component-example">
-                                <span class="example-label">示例：</span>
+                           
                                 <code class="code-block">&lt;w:style w:type="paragraph" w:styleId="Normal"&gt;...&lt;/w:style&gt;</code>
-                            </div>
+                            
                         </div>
                     </div>
                     
@@ -301,11 +298,10 @@
                         </div>
                         <div class="component-content">
                             <p class="component-desc">存储文档的全局设置，如拼写检查、自动保存、视图选项等。</p>
-                            <div class="component-example">
-                                <span class="example-label">示例：</span>
+                            
                                 <code class="code-block">&lt;w:zoom w:percent="100"/&gt;
 &lt;w:proofState w:spelling="clean"/&gt;</code>
-                            </div>
+                            
                         </div>
                     </div>
                     
@@ -316,11 +312,10 @@
                         </div>
                         <div class="component-content">
                             <p class="component-desc">包含文档属性，如标题、作者、创建时间、修改时间等元数据。</p>
-                            <div class="component-example">
-                                <span class="example-label">示例：</span>
+                            
                                 <code class="code-block">&lt;dc:title&gt;My Document&lt;/dc:title&gt;
 &lt;dc:creator&gt;John Doe&lt;/dc:creator&gt;</code>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
